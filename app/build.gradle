@@ -30,6 +30,9 @@ android {
   buildFeatures {
     compose true
   }
+  composeOptions {
+    kotlinCompilerExtensionVersion "0.1.0-dev04"
+  }
 }
 
 dependencies {
@@ -44,6 +47,11 @@ dependencies {
   implementation "androidx.ui:ui-material:${versions.androidx.compose}"
   implementation "androidx.ui:ui-tooling:${versions.androidx.compose}"
   implementation "androidx.ui:ui-foundation:${versions.androidx.compose}"
+
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin.coroutines}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin.coroutines}"
+
+  implementation project(path: ':network')
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'androidx.test.ext:junit:1.1.1'
