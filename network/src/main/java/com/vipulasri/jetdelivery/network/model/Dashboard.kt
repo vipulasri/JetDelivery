@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.network
+package com.vipulasri.jetdelivery.network.model
 
 data class Dashboard(
     val data: List<Item>
