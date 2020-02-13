@@ -2,29 +2,49 @@ package com.vipulasri.jetdelivery.ui
 
 import androidx.compose.Composable
 import androidx.ui.core.Text
-import androidx.ui.graphics.Color
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.TopAppBar
+import androidx.ui.foundation.VerticalScroller
+import androidx.ui.layout.*
+import androidx.ui.material.*
+import androidx.ui.res.stringResource
+import androidx.ui.text.TextStyle
+import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
-import com.vipulasri.jetdelivery.ui.home.HomeScreen
+import androidx.ui.unit.dp
+import com.vipulasri.jetdelivery.R
+import com.vipulasri.jetdelivery.common.AppTopBar
+import com.vipulasri.jetdelivery.common.showError
+import com.vipulasri.jetdelivery.common.showLoading
+import com.vipulasri.jetdelivery.data.Result
+import com.vipulasri.jetdelivery.data.observe
+import com.vipulasri.jetdelivery.network.model.Dashboard
+import com.vipulasri.jetdelivery.ui.main.MainViewModel
 
 @Composable
-fun JetDeliveryApp() {
+fun JetDeliveryApp(viewModel: MainViewModel) {
     MaterialTheme(colors = lightThemeColors) {
-        HomeScreen()
+        Scaffold(topAppBar = {
+            AppTopBar(name = stringResource(id = R.string.app_name))
+        }) {
+            when(val data = observe(data = viewModel.dashboardItems)) {
+                is Result.Loading -> {
+                    showLoading()
+                }
+                is Result.Success -> {
+                    showData(data = data.data?: emptyList())
+                }
+                is Result.Failure -> {
+                    showError(message = data.error.message?: "", onRetry = { viewModel.loadData() })
+                }
+            }
+        }
     }
 }
 
 @Composable
-fun AppTopBar(name: String) {
-    TopAppBar(
-        color = Color.White,
-        title = { Text (text = name) }
-    )
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    JetDeliveryApp()
+private fun showData(data: List<Dashboard.Item>) {
+    VerticalScroller() {
+        Column(modifier = LayoutPadding(16.dp)) {
+            Text(data.toString())
+        }
+    }
 }

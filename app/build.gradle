@@ -51,6 +51,9 @@ dependencies {
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin.coroutines}"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin.coroutines}"
 
+  implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidx.ktx.lifecycle}"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.ktx.lifecycle}"
+
   implementation project(path: ':network')
 
   testImplementation 'junit:junit:4.12'
