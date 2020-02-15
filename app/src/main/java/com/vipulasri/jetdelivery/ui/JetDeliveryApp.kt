@@ -5,6 +5,7 @@ import androidx.ui.core.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.*
 import androidx.ui.material.*
+import androidx.ui.res.dimensionResource
 import androidx.ui.res.stringResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.style.TextAlign
@@ -12,6 +13,7 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.common.AppTopBar
+import com.vipulasri.jetdelivery.common.showBanner
 import com.vipulasri.jetdelivery.common.showError
 import com.vipulasri.jetdelivery.common.showLoading
 import com.vipulasri.jetdelivery.data.Result
@@ -42,9 +44,13 @@ fun JetDeliveryApp(viewModel: MainViewModel) {
 
 @Composable
 private fun showData(data: List<Dashboard.Item>) {
-    VerticalScroller() {
-        Column(modifier = LayoutPadding(16.dp)) {
-            Text(data.toString())
+    VerticalScroller {
+        Column(modifier = LayoutPadding(top = dimensionResource(id = R.dimen.padding), bottom = dimensionResource(id = R.dimen.padding))) {
+            data.forEach { item ->
+                if(item.viewType == "bannerScroll") {
+                    showBanner(item = item)
+                }
+            }
         }
     }
 }
