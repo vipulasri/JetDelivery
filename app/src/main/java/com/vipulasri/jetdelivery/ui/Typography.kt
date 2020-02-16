@@ -7,9 +7,9 @@ import androidx.ui.text.font.FontFamily
 import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.sp
 
-val regular = Font("opensans_regular.ttf")
-val medium = Font("opensans_semibold.ttf", FontWeight.W600)
-val semibold = Font("opensans_bold.ttf", FontWeight.W700)
+val regular = Font("nunito_regular.ttf")
+val medium = Font("nunito_semibold.ttf", FontWeight.W600)
+val semibold = Font("nunito_bold.ttf", FontWeight.W700)
 
 val appFontFamily = FontFamily(fonts = listOf(regular, medium, semibold))
 

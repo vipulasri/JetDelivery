@@ -14,7 +14,6 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.Container
 import androidx.ui.layout.LayoutHeight
 import androidx.ui.layout.Spacer
-import androidx.ui.res.dimensionResource
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
@@ -25,7 +24,7 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 fun showCategoryElement(item: Dashboard.Item.SubItem) {
     Column{
         categoryImage(item = item)
-        Spacer(modifier = LayoutHeight(dimensionResource(id = R.dimen.padding)))
+        Spacer(modifier = LayoutHeight(5.dp))
         categoryInfo(title = item.title, subTitle = item.subTitle)
     }
 }
@@ -49,7 +48,7 @@ private fun categoryImage(item: Dashboard.Item.SubItem) {
 private fun categoryInfo(title: String?, subTitle: String?) {
     title?.let {
         Text(text = it,
-            style = themeTypography.caption
+            style = themeTypography.body2
         )
     }
     subTitle?.let {
