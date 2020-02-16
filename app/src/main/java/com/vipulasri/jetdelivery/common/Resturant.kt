@@ -20,15 +20,16 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 fun showRestaurantElement(item: Dashboard.Item.SubItem) {
     Row(modifier = LayoutPadding(dimensionResource(id = R.dimen.padding))) {
         restaurantImage(url = item.imageUrl)
-        Column(modifier = LayoutFlexible(1f)
-            .plus(
-                LayoutPadding(
-                    left = dimensionResource(id = R.dimen.padding),
-                    right = dimensionResource(id = R.dimen.padding)
+        Column(
+            modifier = LayoutFlexible(1f)
+                .plus(
+                    LayoutPadding(
+                        left = dimensionResource(id = R.dimen.padding),
+                        right = dimensionResource(id = R.dimen.padding)
+                    )
+                ).plus(
+                    LayoutGravity.Center
                 )
-            ).plus(
-                LayoutGravity.Center
-            )
         ) {
 
             val title = item.title ?: "Name"
@@ -46,7 +47,8 @@ fun showRestaurantElement(item: Dashboard.Item.SubItem) {
                 VectorImage(
                     id = R.drawable.ic_round_star_24,
                     tint = Color(0xFFF5CE47),
-                    size = LayoutSize(16.dp, 16.dp))
+                    size = LayoutSize(16.dp, 16.dp)
+                )
 
                 Spacer(modifier = LayoutWidth(4.dp))
 

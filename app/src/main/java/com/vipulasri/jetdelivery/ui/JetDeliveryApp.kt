@@ -21,15 +21,17 @@ fun JetDeliveryApp(viewModel: MainViewModel) {
         Scaffold(topAppBar = {
             AppTopBar(name = stringResource(id = R.string.app_name))
         }) {
-            when(val data = observe(data = viewModel.dashboardItems)) {
+            when (val data = observe(data = viewModel.dashboardItems)) {
                 is Result.Loading -> {
                     showLoading()
                 }
                 is Result.Success -> {
-                    showData(data = data.data?: emptyList())
+                    showData(data = data.data ?: emptyList())
                 }
                 is Result.Failure -> {
-                    showError(message = data.error.message?: "", onRetry = { viewModel.loadData() })
+                    showError(
+                        message = data.error.message ?: "",
+                        onRetry = { viewModel.loadData() })
                 }
             }
         }
@@ -39,9 +41,14 @@ fun JetDeliveryApp(viewModel: MainViewModel) {
 @Composable
 private fun showData(data: List<Dashboard.Item>) {
     VerticalScroller {
-        Column(modifier = LayoutPadding(top = dimensionResource(id = R.dimen.padding), bottom = dimensionResource(id = R.dimen.padding))) {
-            data.forEachIndexed{ index, item ->
-                when(item.viewType) {
+        Column(
+            modifier = LayoutPadding(
+                top = dimensionResource(id = R.dimen.padding),
+                bottom = dimensionResource(id = R.dimen.padding)
+            )
+        ) {
+            data.forEachIndexed { index, item ->
+                when (item.viewType) {
                     "horizontalScroll" -> showHorizontalElements(item = item)
                     "verticalScroll" -> showVerticalElements(item = item)
                 }
@@ -57,7 +64,7 @@ private fun showHorizontalElements(item: Dashboard.Item) {
     }
     horizontalScroll {
         item.data.forEachIndexed { index, data ->
-            when(data.viewType) {
+            when (data.viewType) {
                 "bannerElement" -> showBannerElement(item = data)
                 "categoryElement" -> showCategoryElement(item = data)
             }
@@ -71,7 +78,7 @@ private fun showVerticalElements(item: Dashboard.Item) {
         showHeader(title = it.title, hasMore = it.hasMore)
     }
     item.data.forEachIndexed { index, data ->
-        when(data.viewType) {
+        when (data.viewType) {
             "restaurantElement" -> showRestaurantElement(item = data)
         }
         if (index != item.data.size) showVerticalDivider()

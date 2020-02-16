@@ -22,7 +22,7 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 
 @Composable
 fun showCategoryElement(item: Dashboard.Item.SubItem) {
-    Column{
+    Column {
         categoryImage(item = item)
         Spacer(modifier = LayoutHeight(5.dp))
         categoryInfo(title = item.title, subTitle = item.subTitle)
@@ -35,10 +35,13 @@ private fun categoryImage(item: Dashboard.Item.SubItem) {
         Clip(shape = RoundedCornerShape(5.dp)) {
             val bgColor = item.meta?.bgColor?.let { color ->
                 Color(parseColor(color))
-            }?: Color.Blue
+            } ?: Color.Blue
             DrawShape(shape = RectangleShape, color = bgColor)
             Container(width = 40.dp, height = 40.dp) {
-                DrawImage(image = imageResource(id = R.drawable.placeholder_category), tint = Color.White)
+                DrawImage(
+                    image = imageResource(id = R.drawable.placeholder_category),
+                    tint = Color.White
+                )
             }
         }
     }
@@ -47,13 +50,16 @@ private fun categoryImage(item: Dashboard.Item.SubItem) {
 @Composable
 private fun categoryInfo(title: String?, subTitle: String?) {
     title?.let {
-        Text(text = it,
+        Text(
+            text = it,
             style = themeTypography.body2
         )
     }
     subTitle?.let {
-        Text(text = it,
-            style = themeTypography.overline.copy(color = Color.Gray))
+        Text(
+            text = it,
+            style = themeTypography.overline.copy(color = Color.Gray)
+        )
     }
 }
 

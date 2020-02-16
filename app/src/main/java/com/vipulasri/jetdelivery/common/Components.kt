@@ -61,8 +61,8 @@ fun showError(message: String, onRetry: () -> Unit) {
 }
 
 @Composable
-fun horizontalScroll(children: @Composable() RowScope.() -> Unit) {
-    HorizontalScroller() {
+fun horizontalScroll(modifier: Modifier = Modifier.None, children: @Composable() RowScope.() -> Unit) {
+    HorizontalScroller(modifier = modifier) {
         Row(
             modifier = LayoutPadding(
                 left = dimensionResource(id = R.dimen.padding),
@@ -86,7 +86,7 @@ fun showHeader(title: String, hasMore: Boolean) {
     ) {
         Text(modifier = LayoutFlexible(1f).plus(LayoutGravity.Center),
             text = title,
-            style = themeTypography.subtitle1)
+            style = themeTypography.h6)
         if(hasMore) {
             Button(
                 style = TextButtonStyle()
