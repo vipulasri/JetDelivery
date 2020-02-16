@@ -1,26 +1,26 @@
 package com.vipulasri.jetdelivery.common
 
+import android.text.Layout
+import androidx.annotation.DrawableRes
 import androidx.compose.Composable
-import androidx.ui.core.Draw
-import androidx.ui.core.LayoutTag
-import androidx.ui.core.Text
+import androidx.ui.core.*
 import androidx.ui.foundation.HorizontalScroller
 import androidx.ui.graphics.Color
 import androidx.ui.graphics.Paint
+import androidx.ui.graphics.vector.DrawVector
 import androidx.ui.layout.*
 import androidx.ui.layout.constraintlayout.ConstraintLayout
 import androidx.ui.layout.constraintlayout.ConstraintSet
 import androidx.ui.layout.constraintlayout.ConstraintSetBuilderScope
-import androidx.ui.material.Button
-import androidx.ui.material.CircularProgressIndicator
-import androidx.ui.material.TextButtonStyle
-import androidx.ui.material.TopAppBar
+import androidx.ui.material.*
 import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.dimensionResource
 import androidx.ui.res.stringResource
+import androidx.ui.res.vectorResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
+import androidx.ui.unit.Dp
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import androidx.ui.unit.toRect
@@ -97,6 +97,27 @@ fun showHeader(title: String, hasMore: Boolean) {
                         style = themeTypography.caption)
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun showVerticalDivider() {
+    Divider(modifier = LayoutPadding(
+        left = dimensionResource(id = R.dimen.padding),
+        right = dimensionResource(id = R.dimen.padding)),
+        color = Color.LightGray.copy(alpha = 0.2f))
+}
+
+@Composable
+fun VectorImage(modifier: Modifier = Modifier.None, @DrawableRes id: Int, tint: Color = Color.Transparent, size: LayoutSize? = null) {
+    val vector = vectorResource(id)
+    WithDensity {
+        val layoutSize = size?: LayoutSize(vector.defaultWidth, vector.defaultHeight)
+        Container(
+            modifier = modifier + layoutSize
+        ) {
+            DrawVector(vector, tint)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.vipulasri.jetdelivery.ui
 
 import androidx.compose.Composable
 import androidx.ui.foundation.VerticalScroller
+import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.res.dimensionResource
@@ -42,6 +43,7 @@ private fun showData(data: List<Dashboard.Item>) {
             data.forEachIndexed{ index, item ->
                 when(item.viewType) {
                     "horizontalScroll" -> showHorizontalElements(item = item)
+                    "verticalScroll" -> showVerticalElements(item = item)
                 }
                 if (index != item.data.size) Spacer(modifier = LayoutHeight(10.dp))
             }
@@ -61,5 +63,17 @@ private fun showHorizontalElements(item: Dashboard.Item) {
             }
             if (index != item.data.size) Spacer(modifier = LayoutWidth(10.dp))
         }
+    }
+}
+
+private fun showVerticalElements(item: Dashboard.Item) {
+    item.header?.let {
+        showHeader(title = it.title, hasMore = it.hasMore)
+    }
+    item.data.forEachIndexed { index, data ->
+        when(data.viewType) {
+            "restaurantElement" -> showRestaurantElement(item = data)
+        }
+        if (index != item.data.size) showVerticalDivider()
     }
 }
