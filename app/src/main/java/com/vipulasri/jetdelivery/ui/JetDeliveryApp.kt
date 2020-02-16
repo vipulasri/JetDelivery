@@ -50,6 +50,9 @@ private fun showData(data: List<Dashboard.Item>) {
 }
 
 private fun showHorizontalElements(item: Dashboard.Item) {
+    item.header?.let {
+        showHeader(title = it.title, hasMore = it.hasMore)
+    }
     horizontalScroll {
         item.data.forEachIndexed { index, data ->
             when(data.viewType) {
