@@ -2,11 +2,13 @@ package com.vipulasri.jetdelivery.common
 
 import androidx.compose.Composable
 import androidx.ui.core.Text
+import androidx.ui.foundation.HorizontalScroller
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.Button
 import androidx.ui.material.CircularProgressIndicator
 import androidx.ui.material.TopAppBar
+import androidx.ui.res.dimensionResource
 import androidx.ui.res.stringResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.style.TextAlign
@@ -48,6 +50,18 @@ fun showError(message: String, onRetry: () -> Unit) {
     }
 }
 
+@Composable
+fun horizontalScroll(children: @Composable() RowScope.() -> Unit) {
+    HorizontalScroller() {
+        Row(
+            modifier = LayoutPadding(
+                left = dimensionResource(id = R.dimen.padding),
+                right = dimensionResource(id = R.dimen.padding)
+            ),
+            children = children
+        )
+    }
+}
 
 @Preview
 @Composable

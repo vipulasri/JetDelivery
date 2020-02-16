@@ -60,7 +60,7 @@ val themeTypography = Typography(
     ),
     overline = TextStyle(
         fontFamily = appFontFamily,
-        fontWeight = FontWeight.W600,
-        fontSize = 12.sp
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp
     )
 )

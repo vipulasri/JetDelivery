@@ -23,23 +23,6 @@ import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
 
 @Composable
-fun showBanner(item: Dashboard.Item) {
-    HorizontalScroller() {
-        Row(
-            modifier = LayoutPadding(
-                left = dimensionResource(id = R.dimen.padding),
-                right = dimensionResource(id = R.dimen.padding)
-            )
-        ) {
-            item.data.forEachIndexed { index, data ->
-                showBannerElement(item = data)
-                if (index != item.data.size) Spacer(modifier = LayoutWidth(10.dp))
-            }
-        }
-    }
-}
-
-@Composable
 fun showBannerElement(item: Dashboard.Item.SubItem) {
     Container(width = 150.dp, height = 178.dp) {
         Clip(shape = RoundedCornerShape(5.dp)) {

@@ -18,7 +18,8 @@ data class Dashboard(
             val imageUrl: String,
             val title: String?,
             val subTitle: String?,
-            val action: DashboardAction
+            val action: DashboardAction,
+            val meta: Meta?
         ) {
             data class Meta(
                 val bgColor: String?,

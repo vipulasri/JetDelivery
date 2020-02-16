@@ -9,7 +9,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("3f780a05ddc2416cc2d52a145a8c3ebe3f153cf8/data.json")
+    @GET("data.json")
     suspend fun getDashboard(): Dashboard
 
 }
