@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.common
+package com.vipulasri.jetdelivery.components
 
 import androidx.compose.Composable
 import androidx.ui.core.Clip

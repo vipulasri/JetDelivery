@@ -1,17 +1,12 @@
-package com.vipulasri.jetdelivery.common
+package com.vipulasri.jetdelivery.components
 
-import android.text.Layout
 import androidx.annotation.DrawableRes
 import androidx.compose.Composable
 import androidx.ui.core.*
 import androidx.ui.foundation.HorizontalScroller
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.Paint
 import androidx.ui.graphics.vector.DrawVector
 import androidx.ui.layout.*
-import androidx.ui.layout.constraintlayout.ConstraintLayout
-import androidx.ui.layout.constraintlayout.ConstraintSet
-import androidx.ui.layout.constraintlayout.ConstraintSetBuilderScope
 import androidx.ui.material.*
 import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.dimensionResource
@@ -20,10 +15,7 @@ import androidx.ui.res.vectorResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.Dp
 import androidx.ui.unit.dp
-import androidx.ui.unit.sp
-import androidx.ui.unit.toRect
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.ui.themeTypography
 
@@ -128,10 +120,4 @@ private fun showErrorPreview() {
     showError(
         message = "Error Message\nSomething went wrong!",
         onRetry = { } )
-}
-
-@Preview
-@Composable
-fun CLDemo() {
-    showHeader(title = "Top Categories", hasMore = true)
 }

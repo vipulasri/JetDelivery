@@ -1,23 +1,17 @@
-package com.vipulasri.jetdelivery.common
+package com.vipulasri.jetdelivery.components
 
 import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.Clip
 import androidx.ui.core.Text
 import androidx.ui.foundation.DrawImage
-import androidx.ui.foundation.HorizontalScroller
 import androidx.ui.foundation.shape.DrawShape
 import androidx.ui.foundation.shape.RectangleShape
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
-import androidx.ui.res.colorResource
-import androidx.ui.res.dimensionResource
 import androidx.ui.res.imageResource
-import androidx.ui.text.TextStyle
-import androidx.ui.text.style.TextAlign
 import androidx.ui.unit.dp
-import androidx.ui.unit.sp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography

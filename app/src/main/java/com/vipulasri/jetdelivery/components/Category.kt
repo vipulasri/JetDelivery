@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.common
+package com.vipulasri.jetdelivery.components
 
 import androidx.annotation.ColorInt
 import androidx.annotation.Size
