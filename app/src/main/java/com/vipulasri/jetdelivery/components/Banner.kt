@@ -12,6 +12,7 @@ import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
+import androidx.ui.unit.sp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
@@ -30,7 +31,7 @@ fun showBannerElement(item: Dashboard.Item.SubItem) {
                         DrawShape(shape = RectangleShape, color = Color.Black.copy(alpha = 0.3f))
                         Text(
                             text = it,
-                            style = themeTypography.caption.copy(color = Color.White),
+                            style = themeTypography.subtitle2.copy(color = Color.White, fontSize = 12.sp),
                             modifier = LayoutPadding(10.dp)
                         )
                     }
