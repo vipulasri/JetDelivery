@@ -29,7 +29,6 @@ fun showDashboard(data: List<Dashboard.Item>) {
     }
 }
 
-@Composable
 private fun showHorizontalElements(item: Dashboard.Item) {
     item.header?.let {
         showHeader(title = it.title, hasMore = it.hasMore)
@@ -45,7 +44,6 @@ private fun showHorizontalElements(item: Dashboard.Item) {
     }
 }
 
-@Composable
 private fun showVerticalElements(item: Dashboard.Item) {
     item.header?.let {
         showHeader(title = it.title, hasMore = it.hasMore)
