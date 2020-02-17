@@ -23,6 +23,7 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 @Composable
 fun showCategoryElement(item: Dashboard.Item.SubItem) {
     Column {
+        Spacer(modifier = LayoutHeight(5.dp)) // added to support space for header
         categoryImage(item = item)
         Spacer(modifier = LayoutHeight(5.dp))
         categoryInfo(title = item.title, subTitle = item.subTitle)
