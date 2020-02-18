@@ -9,6 +9,8 @@ import androidx.ui.material.Button
 import androidx.ui.material.TextButtonStyle
 import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.dimensionResource
+import androidx.ui.text.font.FontWeight
+import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.ui.themeTypography
@@ -23,19 +25,29 @@ fun showHeader(title: String, hasMore: Boolean) {
             bottom = 5.dp
         )
     ) {
-        Text(modifier = LayoutFlexible(1f).plus(LayoutGravity.Center),
+        Text(
+            modifier = LayoutFlexible(1f).plus(LayoutGravity.Center),
             text = title,
-            style = themeTypography.h6)
+            style = themeTypography.h6
+        )
         if (hasMore) {
             Button(
                 style = TextButtonStyle()
             ) {
                 Ripple(bounded = false) {
-                    Text(modifier = LayoutGravity.Center,
+                    Text(
+                        modifier = LayoutGravity.Center,
                         text = "View All",
-                        style = themeTypography.caption)
+                        style = themeTypography.caption.copy(fontWeight = FontWeight.W600)
+                    )
                 }
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun previewHeader() {
+    showHeader(title = "Popular Restaurants Near You", hasMore = true)
 }
