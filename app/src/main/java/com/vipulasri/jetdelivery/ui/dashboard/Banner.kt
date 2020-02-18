@@ -18,6 +18,7 @@ import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.vipulasri.jetdelivery.R
+import com.vipulasri.jetdelivery.components.image
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
 
@@ -26,7 +27,9 @@ fun showBannerElement(item: Dashboard.Item.SubItem) {
     Ripple(bounded = true) {
         Container(width = 150.dp, height = 178.dp) {
             Clip(shape = RoundedCornerShape(5.dp)) {
-                DrawImage(image = imageResource(id = R.drawable.placeholder_banner))
+                image(item.imageUrl)?.let {
+                    DrawImage(it)
+                }?: DrawImage(image = imageResource(id = R.drawable.placeholder_banner))
                 item.title?.let {
                     Align(alignment = Alignment.BottomLeft) {
                         Container(

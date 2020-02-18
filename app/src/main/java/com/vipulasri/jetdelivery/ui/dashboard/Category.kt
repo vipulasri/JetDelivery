@@ -18,6 +18,7 @@ import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
+import com.vipulasri.jetdelivery.components.image
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
 
@@ -46,9 +47,8 @@ private fun categoryImage(item: Dashboard.Item.SubItem) {
             DrawShape(shape = RectangleShape, color = bgColor)
             Container(width = 40.dp, height = 40.dp) {
                 DrawImage(
-                    image = imageResource(id = R.drawable.placeholder_category),
-                    tint = Color.White
-                )
+                    image = image(item.imageUrl)?: imageResource(id = R.drawable.placeholder_category),
+                    tint = Color.White)
             }
         }
     }

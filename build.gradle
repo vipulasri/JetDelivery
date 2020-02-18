@@ -17,7 +17,8 @@ buildscript {
           ],
           'okhttp': '4.3.1',
           'retrofit': '2.7.1',
-          'ktlint': '0.35'
+          'ktlint': '0.35',
+          'coil': '0.9.5'
   ]
   repositories {
     google()

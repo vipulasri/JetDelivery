@@ -54,6 +54,8 @@ dependencies {
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidx.ktx.lifecycle}"
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.ktx.lifecycle}"
 
+  implementation "io.coil-kt:coil:${versions.coil}"
+
   implementation project(path: ':network')
 
   testImplementation 'junit:junit:4.12'

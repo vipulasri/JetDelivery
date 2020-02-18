@@ -15,6 +15,7 @@ import androidx.ui.text.SpanStyle
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.VectorImage
+import com.vipulasri.jetdelivery.components.image
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
 
@@ -43,10 +44,10 @@ fun showRestaurantElement(item: Dashboard.Item.SubItem) {
 }
 
 @Composable
-private fun restaurantImage(url: String?) {
+private fun restaurantImage(url: String) {
     Container(width = 70.dp, height = 70.dp) {
         Clip(shape = RoundedCornerShape(5.dp)) {
-            DrawImage(image = imageResource(id = R.drawable.placeholder_restaurant))
+            DrawImage(image = image(url) ?: imageResource(id = R.drawable.placeholder_restaurant))
         }
     }
 }

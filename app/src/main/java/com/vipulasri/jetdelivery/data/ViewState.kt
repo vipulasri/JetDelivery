@@ -14,12 +14,6 @@ sealed class Result<out T> {
     class Failure(val error: Throwable) : Result<Nothing>()
 }
 
-sealed class DashboardViewState {
-    object Loading : DashboardViewState()
-    class Success(val data: List<Dashboard.Item>) : DashboardViewState()
-    class Failure(val error: Throwable) : DashboardViewState()
-}
-
 /**
  * Based on https://medium.com/swlh/android-mvi-with-jetpack-compose-b0890f5156ac
  * Adapted for 0.1.0-dev04
