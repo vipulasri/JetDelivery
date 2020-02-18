@@ -14,6 +14,7 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.Container
 import androidx.ui.layout.LayoutHeight
 import androidx.ui.layout.Spacer
+import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
@@ -24,7 +25,9 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 fun showCategoryElement(item: Dashboard.Item.SubItem) {
     Column {
         Spacer(modifier = LayoutHeight(5.dp)) // added to support space for header
-        categoryImage(item = item)
+        Ripple(bounded = true) {
+            categoryImage(item = item)
+        }
         Spacer(modifier = LayoutHeight(5.dp))
         categoryInfo(title = item.title, subTitle = item.subTitle)
     }
