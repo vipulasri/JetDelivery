@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.ui
+package com.vipulasri.jetdelivery.ui.dashboard
 
 import androidx.compose.Composable
 import androidx.ui.foundation.VerticalScroller
@@ -20,8 +20,12 @@ fun showDashboard(data: List<Dashboard.Item>) {
         ) {
             data.forEachIndexed { index, item ->
                 when (item.viewType) {
-                    "horizontalScroll" -> showHorizontalElements(item = item)
-                    "verticalScroll" -> showVerticalElements(item = item)
+                    "horizontalScroll" -> showHorizontalElements(
+                        item = item
+                    )
+                    "verticalScroll" -> showVerticalElements(
+                        item = item
+                    )
                 }
                 if (index != item.data.size) Spacer(modifier = LayoutHeight(10.dp))
             }
@@ -36,8 +40,12 @@ private fun showHorizontalElements(item: Dashboard.Item) {
     horizontalScroll {
         item.data.forEachIndexed { index, data ->
             when (data.viewType) {
-                "bannerElement" -> showBannerElement(item = data)
-                "categoryElement" -> showCategoryElement(item = data)
+                "bannerElement" -> showBannerElement(
+                    item = data
+                )
+                "categoryElement" -> showCategoryElement(
+                    item = data
+                )
             }
             if (index != item.data.size) Spacer(modifier = LayoutWidth(10.dp))
         }
@@ -50,7 +58,9 @@ private fun showVerticalElements(item: Dashboard.Item) {
     }
     item.data.forEachIndexed { index, data ->
         when (data.viewType) {
-            "restaurantElement" -> showRestaurantElement(item = data)
+            "restaurantElement" -> showRestaurantElement(
+                item = data
+            )
         }
         if (index != item.data.size) showVerticalDivider()
     }

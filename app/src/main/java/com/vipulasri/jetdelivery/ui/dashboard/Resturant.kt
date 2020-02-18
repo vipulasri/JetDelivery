@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.components
+package com.vipulasri.jetdelivery.ui.dashboard
 
 import androidx.compose.Composable
 import androidx.ui.core.Clip
@@ -14,6 +14,7 @@ import androidx.ui.text.AnnotatedString
 import androidx.ui.text.SpanStyle
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
+import com.vipulasri.jetdelivery.components.VectorImage
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
 

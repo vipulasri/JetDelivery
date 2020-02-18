@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.components
+package com.vipulasri.jetdelivery.ui.dashboard
 
 import androidx.annotation.ColorInt
 import androidx.annotation.Size
@@ -29,7 +29,10 @@ fun showCategoryElement(item: Dashboard.Item.SubItem) {
             categoryImage(item = item)
         }
         Spacer(modifier = LayoutHeight(5.dp))
-        categoryInfo(title = item.title, subTitle = item.subTitle)
+        categoryInfo(
+            title = item.title,
+            subTitle = item.subTitle
+        )
     }
 }
 

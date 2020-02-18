@@ -9,15 +9,15 @@ import androidx.lifecycle.Observer
 import com.vipulasri.jetdelivery.network.model.Dashboard
 
 sealed class Result<out T> {
-    object Loading: Result<Nothing>()
-    class Success<T>(val data: T?): Result<T>()
-    class Failure(val error: Throwable): Result<Nothing>()
+    object Loading : Result<Nothing>()
+    class Success<T>(val data: T?) : Result<T>()
+    class Failure(val error: Throwable) : Result<Nothing>()
 }
 
 sealed class DashboardViewState {
-    object Loading: DashboardViewState()
-    class Success(val data: List<Dashboard.Item>): DashboardViewState()
-    class Failure(val error: Throwable): DashboardViewState()
+    object Loading : DashboardViewState()
+    class Success(val data: List<Dashboard.Item>) : DashboardViewState()
+    class Failure(val error: Throwable) : DashboardViewState()
 }
 
 /**

@@ -10,7 +10,7 @@ import com.vipulasri.jetdelivery.network.model.Dashboard
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val _dashboardItems = MutableLiveData<Result<List<Dashboard.Item>>>()
     val dashboardItems: LiveData<Result<List<Dashboard.Item>>> = _dashboardItems
@@ -22,5 +22,4 @@ class MainViewModel: ViewModel() {
             _dashboardItems.postValue(Repository.getDashboardData())
         }
     }
-
 }

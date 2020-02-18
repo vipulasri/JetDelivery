@@ -1,7 +1,6 @@
 package com.vipulasri.jetdelivery.ui
 
 import androidx.ui.graphics.Color
-import androidx.ui.material.ColorPalette
 import androidx.ui.material.lightColorPalette
 
 val lightThemeColors = lightColorPalette(

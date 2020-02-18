@@ -1,4 +1,4 @@
-package com.vipulasri.jetdelivery.components
+package com.vipulasri.jetdelivery.ui.dashboard
 
 import androidx.compose.Composable
 import androidx.ui.core.Alignment
@@ -9,7 +9,10 @@ import androidx.ui.foundation.shape.DrawShape
 import androidx.ui.foundation.shape.RectangleShape
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.layout.*
+import androidx.ui.layout.Align
+import androidx.ui.layout.Container
+import androidx.ui.layout.LayoutPadding
+import androidx.ui.layout.LayoutWidth
 import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
