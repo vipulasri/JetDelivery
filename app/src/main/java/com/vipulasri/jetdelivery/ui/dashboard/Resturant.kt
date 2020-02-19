@@ -8,8 +8,10 @@ import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.ripple.Ripple
+import androidx.ui.material.surface.Surface
 import androidx.ui.res.dimensionResource
 import androidx.ui.res.imageResource
+import androidx.ui.res.stringResource
 import androidx.ui.text.AnnotatedString
 import androidx.ui.text.SpanStyle
 import androidx.ui.unit.dp
@@ -17,6 +19,7 @@ import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.VectorImage
 import com.vipulasri.jetdelivery.components.image
 import com.vipulasri.jetdelivery.network.model.Dashboard
+import com.vipulasri.jetdelivery.ui.lightThemeColors
 import com.vipulasri.jetdelivery.ui.themeTypography
 
 @Composable
@@ -74,11 +77,27 @@ private fun restaurantInfo(item: Dashboard.Item.SubItem) {
 
         Spacer(modifier = LayoutWidth(4.dp))
 
-        Text(text = AnnotatedString {
-            append(rating)
-            pushStyle(SpanStyle(color = Color.Gray))
-            append(" ( $reviewCount reviews)")
-            popStyle()
-        }, style = themeTypography.caption)
+        Row {
+            Text(
+                modifier = LayoutAlign.CenterVertically.plus(LayoutFlexible(1f)),
+                text = AnnotatedString {
+                    append(rating)
+                    pushStyle(SpanStyle(color = Color.Gray))
+                    append(" ( $reviewCount reviews)")
+                    popStyle()
+                }, style = themeTypography.caption
+            )
+
+            Surface(
+                color = lightThemeColors.primary,
+                shape = RoundedCornerShape(100.dp)
+            ) {
+                Text(
+                    modifier = LayoutPadding(left = 5.dp, top = 2.dp, right = 5.dp, bottom = 2.dp),
+                    text = stringResource(id = R.string.free_delivery),
+                    style = themeTypography.overline
+                )
+            }
+        }
     }
 }
