@@ -14,6 +14,7 @@ import androidx.ui.res.imageResource
 import androidx.ui.res.stringResource
 import androidx.ui.text.AnnotatedString
 import androidx.ui.text.SpanStyle
+import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.VectorImage
@@ -62,7 +63,11 @@ private fun restaurantInfo(item: Dashboard.Item.SubItem) {
     val rating = "${item.meta?.rating}" ?: "4.0"
     val reviewCount = "${item.meta?.reviewCount}" ?: "500+ reviews"
 
-    Text(text = title)
+    Text(
+        text = title,
+        style = themeTypography.subtitle1
+    )
+
     Text(
         text = subTitle,
         style = themeTypography.caption.copy(color = Color.Gray)
