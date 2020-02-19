@@ -13,6 +13,7 @@ import androidx.ui.text.font.FontWeight
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
+import com.vipulasri.jetdelivery.components.primaryText
 import com.vipulasri.jetdelivery.ui.themeTypography
 
 @Composable
@@ -25,11 +26,14 @@ fun showHeader(title: String, hasMore: Boolean) {
             bottom = 5.dp
         )
     ) {
-        Text(
-            modifier = LayoutFlexible(1f).plus(LayoutGravity.Center),
-            text = title,
-            style = themeTypography.h6
-        )
+        primaryText {
+            Text(
+                modifier = LayoutFlexible(1f).plus(LayoutGravity.Center),
+                text = title,
+                style = themeTypography.h6
+            )
+        }
+
         if (hasMore) {
             Button(
                 style = TextButtonStyle()

@@ -19,6 +19,8 @@ import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.image
+import com.vipulasri.jetdelivery.components.primaryText
+import com.vipulasri.jetdelivery.components.secondaryText
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.themeTypography
 
@@ -47,8 +49,10 @@ private fun categoryImage(item: Dashboard.Item.SubItem) {
             DrawShape(shape = RectangleShape, color = bgColor)
             Container(width = 40.dp, height = 40.dp) {
                 DrawImage(
-                    image = image(item.imageUrl)?: imageResource(id = R.drawable.placeholder_category),
-                    tint = Color.White)
+                    image = image(item.imageUrl)
+                        ?: imageResource(id = R.drawable.placeholder_category),
+                    tint = Color.White
+                )
             }
         }
     }
@@ -57,16 +61,20 @@ private fun categoryImage(item: Dashboard.Item.SubItem) {
 @Composable
 private fun categoryInfo(title: String?, subTitle: String?) {
     title?.let {
-        Text(
-            text = it,
-            style = themeTypography.body2
-        )
+        primaryText {
+            Text(
+                text = it,
+                style = themeTypography.subtitle2
+            )
+        }
     }
     subTitle?.let {
-        Text(
-            text = it,
-            style = themeTypography.overline.copy(color = Color.Gray)
-        )
+        secondaryText {
+            Text(
+                text = it,
+                style = themeTypography.overline
+            )
+        }
     }
 }
 

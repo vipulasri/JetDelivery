@@ -45,9 +45,9 @@ fun JetDeliveryApp(viewModel: MainViewModel) {
                     showLoading()
                 }
                 is Result.Success -> {
-                  showDashboard(
-                    data = data.data ?: emptyList()
-                  )
+                    showDashboard(
+                        data = data.data ?: emptyList()
+                    )
                 }
                 is Result.Failure -> {
                     showError(

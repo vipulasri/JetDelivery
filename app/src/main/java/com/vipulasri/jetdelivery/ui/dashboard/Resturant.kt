@@ -19,6 +19,8 @@ import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.VectorImage
 import com.vipulasri.jetdelivery.components.image
+import com.vipulasri.jetdelivery.components.primaryText
+import com.vipulasri.jetdelivery.components.secondaryText
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.ui.lightThemeColors
 import com.vipulasri.jetdelivery.ui.themeTypography
@@ -63,15 +65,19 @@ private fun restaurantInfo(item: Dashboard.Item.SubItem) {
     val rating = "${item.meta?.rating}" ?: "4.0"
     val reviewCount = "${item.meta?.reviewCount}" ?: "500+ reviews"
 
-    Text(
-        text = title,
-        style = themeTypography.subtitle1
-    )
+    primaryText {
+        Text(
+            text = title,
+            style = themeTypography.subtitle1
+        )
+    }
 
-    Text(
-        text = subTitle,
-        style = themeTypography.caption.copy(color = Color.Gray)
-    )
+    secondaryText {
+        Text(
+            text = subTitle,
+            style = themeTypography.caption
+        )
+    }
 
     Row(modifier = LayoutAlign.CenterVertically) {
         VectorImage(
