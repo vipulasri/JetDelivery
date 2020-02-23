@@ -28,22 +28,20 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 @Composable
 fun showRestaurantElement(item: Dashboard.Item.SubItem) {
     Ripple(bounded = true) {
-        Padding(padding = dimensionResource(id = R.dimen.padding)) {
-            Row {
-                restaurantImage(url = item.imageUrl)
-                Column(
-                    modifier = LayoutFlexible(1f)
-                        .plus(
-                            LayoutPadding(
-                                left = dimensionResource(id = R.dimen.padding),
-                                right = dimensionResource(id = R.dimen.padding)
-                            )
-                        ).plus(
-                            LayoutGravity.Center
+        Row(modifier = LayoutPadding(dimensionResource(id = R.dimen.padding))) {
+            restaurantImage(url = item.imageUrl)
+            Column(
+                modifier = LayoutFlexible(1f)
+                    .plus(
+                        LayoutPadding(
+                            left = dimensionResource(id = R.dimen.padding),
+                            right = dimensionResource(id = R.dimen.padding)
                         )
-                ) {
-                    restaurantInfo(item = item)
-                }
+                    ).plus(
+                        LayoutGravity.Center
+                    )
+            ) {
+                restaurantInfo(item = item)
             }
         }
     }

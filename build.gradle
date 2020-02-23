@@ -8,7 +8,7 @@ buildscript {
                   'core': '1.2.0',
                   'lifecycle': '2.2.0'
               ],
-              'compose': '0.1.0-dev04',
+              'compose': '0.1.0-dev05',
               'appCompat': '1.1.0',
           ],
           'kotlin': [

@@ -33,9 +33,10 @@ fun showError(message: String, onRetry: () -> Unit) {
             )
             Spacer(modifier = LayoutHeight(20.dp))
             Button(
-                stringResource(id = R.string.retry),
-                onClick = onRetry,
-                modifier = LayoutGravity.Center)
+                modifier = LayoutGravity.Center,
+                onClick = onRetry) {
+                Text(stringResource(id = R.string.retry))
+            }
         }
     }
 }

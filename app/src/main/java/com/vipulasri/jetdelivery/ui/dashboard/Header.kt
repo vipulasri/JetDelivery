@@ -5,8 +5,7 @@ import androidx.ui.core.Text
 import androidx.ui.layout.LayoutGravity
 import androidx.ui.layout.LayoutPadding
 import androidx.ui.layout.Row
-import androidx.ui.material.Button
-import androidx.ui.material.TextButtonStyle
+import androidx.ui.material.TextButton
 import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.dimensionResource
 import androidx.ui.text.font.FontWeight
@@ -35,9 +34,7 @@ fun showHeader(title: String, hasMore: Boolean) {
         }
 
         if (hasMore) {
-            Button(
-                style = TextButtonStyle()
-            ) {
+            TextButton {
                 Ripple(bounded = false) {
                     Text(
                         modifier = LayoutGravity.Center,

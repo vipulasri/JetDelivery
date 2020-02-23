@@ -2,16 +2,15 @@ package com.vipulasri.jetdelivery.ui
 
 import androidx.ui.material.Typography
 import androidx.ui.text.TextStyle
-import androidx.ui.text.font.Font
-import androidx.ui.text.font.FontFamily
-import androidx.ui.text.font.FontWeight
+import androidx.ui.text.font.*
 import androidx.ui.unit.sp
+import com.vipulasri.jetdelivery.R
 
-val regular = Font("nunito_regular.ttf")
-val medium = Font("nunito_semibold.ttf", FontWeight.W600)
-val semibold = Font("nunito_bold.ttf", FontWeight.W700)
+val regular = font(R.font.nunito_regular)
+val medium = font(R.font.nunito_semibold, FontWeight.W600)
+val semibold = font(R.font.nunito_bold, FontWeight.W700)
 
-val appFontFamily = FontFamily(fonts = listOf(regular, medium, semibold))
+val appFontFamily = fontFamily(fonts = listOf(regular, medium, semibold))
 
 val themeTypography = Typography(
     h4 = TextStyle(
