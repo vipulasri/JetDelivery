@@ -27,6 +27,9 @@ import com.vipulasri.jetdelivery.ui.themeTypography
 
 @Composable
 fun showRestaurantElement(item: Dashboard.Item.SubItem) {
+
+    //Ripple issue with padding introduced in dev-05, https://issuetracker.google.com/issues/150060763
+
     Ripple(bounded = true) {
         Row(modifier = LayoutPadding(dimensionResource(id = R.dimen.padding))) {
             restaurantImage(url = item.imageUrl)
