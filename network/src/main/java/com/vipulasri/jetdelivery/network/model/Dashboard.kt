@@ -1,10 +1,12 @@
 package com.vipulasri.jetdelivery.network.model
 
+import com.squareup.moshi.Json
+
 data class Dashboard(
     val data: List<Item>
 ) {
     data class Item(
-        val viewType: String,
+        val viewType: ItemViewType,
         val header: Header?,
         val data: List<SubItem>
     ) {
@@ -14,7 +16,7 @@ data class Dashboard(
         )
 
         data class SubItem(
-            val viewType: String,
+            val viewType: SubItemViewType,
             val imageUrl: String,
             val title: String?,
             val subTitle: String?,
@@ -35,3 +37,14 @@ data class DashboardAction(
     val type: String,
     val value: String
 )
+
+enum class ItemViewType {
+    @Json(name = "horizontalScroll") HorizontalScroll,
+    @Json(name = "verticalScroll") VerticalScroll
+}
+
+enum class SubItemViewType {
+    @Json(name = "bannerElement") Banner,
+    @Json(name = "categoryElement") Category,
+    @Json(name = "restaurantElement") Restaurant
+}

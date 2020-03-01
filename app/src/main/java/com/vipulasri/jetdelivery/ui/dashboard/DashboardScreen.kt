@@ -8,6 +8,8 @@ import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.*
 import com.vipulasri.jetdelivery.network.model.Dashboard
+import com.vipulasri.jetdelivery.network.model.ItemViewType
+import com.vipulasri.jetdelivery.network.model.SubItemViewType
 
 @Composable
 fun showDashboard(data: List<Dashboard.Item>) {
@@ -20,10 +22,10 @@ fun showDashboard(data: List<Dashboard.Item>) {
         ) {
             data.forEachIndexed { index, item ->
                 when (item.viewType) {
-                    "horizontalScroll" -> showHorizontalElements(
+                    ItemViewType.HorizontalScroll -> showHorizontalElements(
                         item = item
                     )
-                    "verticalScroll" -> showVerticalElements(
+                    ItemViewType.VerticalScroll -> showVerticalElements(
                         item = item
                     )
                 }
@@ -40,10 +42,10 @@ private fun showHorizontalElements(item: Dashboard.Item) {
     horizontalScroll {
         item.data.forEachIndexed { index, data ->
             when (data.viewType) {
-                "bannerElement" -> showBannerElement(
+                SubItemViewType.Banner -> showBannerElement(
                     item = data
                 )
-                "categoryElement" -> showCategoryElement(
+                SubItemViewType.Category -> showCategoryElement(
                     item = data
                 )
             }
@@ -58,7 +60,7 @@ private fun showVerticalElements(item: Dashboard.Item) {
     }
     item.data.forEachIndexed { index, data ->
         when (data.viewType) {
-            "restaurantElement" -> showRestaurantElement(
+            SubItemViewType.Restaurant -> showRestaurantElement(
                 item = data
             )
         }
