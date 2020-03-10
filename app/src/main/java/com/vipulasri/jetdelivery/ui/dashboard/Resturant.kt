@@ -14,7 +14,6 @@ import androidx.ui.res.imageResource
 import androidx.ui.res.stringResource
 import androidx.ui.text.AnnotatedString
 import androidx.ui.text.SpanStyle
-import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.dp
 import com.vipulasri.jetdelivery.R
 import com.vipulasri.jetdelivery.components.VectorImage

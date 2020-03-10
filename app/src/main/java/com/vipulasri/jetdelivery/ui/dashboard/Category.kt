@@ -1,7 +1,5 @@
 package com.vipulasri.jetdelivery.ui.dashboard
 
-import androidx.annotation.ColorInt
-import androidx.annotation.Size
 import androidx.compose.Composable
 import androidx.ui.core.Clip
 import androidx.ui.core.Text

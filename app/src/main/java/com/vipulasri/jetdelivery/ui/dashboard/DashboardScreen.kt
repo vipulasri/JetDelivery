@@ -48,6 +48,9 @@ private fun showHorizontalElements(item: Dashboard.Item) {
                 SubItemViewType.Category -> showCategoryElement(
                     item = data
                 )
+                else -> {
+                    // do nothing
+                }
             }
             if (index != item.data.size) Spacer(modifier = LayoutWidth(10.dp))
         }
@@ -63,6 +66,9 @@ private fun showVerticalElements(item: Dashboard.Item) {
             SubItemViewType.Restaurant -> showRestaurantElement(
                 item = data
             )
+            else -> {
+                // do nothing
+            }
         }
         if (index != item.data.size) showVerticalDivider()
     }

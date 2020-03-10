@@ -27,25 +27,36 @@ fun showBannerElement(item: Dashboard.Item.SubItem) {
     Ripple(bounded = true) {
         Container(width = 150.dp, height = 178.dp) {
             Clip(shape = RoundedCornerShape(5.dp)) {
-                image(item.imageUrl)?.let {
-                    DrawImage(it)
-                }?: DrawImage(image = imageResource(id = R.drawable.placeholder_banner))
+                bannerImage(url = item.imageUrl)
                 item.title?.let {
-                    Align(alignment = Alignment.BottomLeft) {
-                        Container(
-                            modifier = LayoutWidth.Fill, height = 50.dp,
-                            alignment = Alignment.CenterLeft
-                        ) {
-                            DrawShape(shape = RectangleShape, color = Color.Black.copy(alpha = 0.3f))
-                            Text(
-                                text = it,
-                                style = themeTypography.subtitle2.copy(color = Color.White, fontSize = 12.sp),
-                                modifier = LayoutPadding(10.dp)
-                            )
-                        }
-                    }
+                    bannerText(title = it)
                 }
             }
+        }
+    }
+}
+
+
+@Composable
+private fun bannerImage(url: String) {
+    image(url)?.let {
+        DrawImage(it)
+    }?: DrawImage(image = imageResource(id = R.drawable.placeholder_banner))
+}
+
+@Composable
+private fun bannerText(title: String) {
+    Align(alignment = Alignment.BottomLeft) {
+        Container(
+            modifier = LayoutWidth.Fill, height = 50.dp,
+            alignment = Alignment.CenterLeft
+        ) {
+            DrawShape(shape = RectangleShape, color = Color.Black.copy(alpha = 0.3f))
+            Text(
+                text = title,
+                style = themeTypography.subtitle2.copy(color = Color.White, fontSize = 12.sp),
+                modifier = LayoutPadding(10.dp)
+            )
         }
     }
 }
