@@ -10,10 +10,14 @@ object Repository {
 
     private val apiService = NetworkClient.service
 
-    suspend fun getDashboardData(): Result<List<Dashboard.Item>> {
+    suspend fun getDashboardData(isRandomRequired: Boolean = false): Result<List<Dashboard.Item>> {
         return withContext(Dispatchers.IO) {
             try {
-                Result.Success(apiService.getDashboard().data)
+                if(isRandomRequired) {
+                    Result.Success(apiService.getRandomDashboard().data)
+                } else {
+                    Result.Success(apiService.getDashboard().data)
+                }
             } catch (exception: Exception) {
                 Result.Failure(exception)
             }

@@ -12,6 +12,9 @@ interface ApiService {
     @GET("data.json")
     suspend fun getDashboard(): Dashboard
 
+    @GET("data-random.json")
+    suspend fun getRandomDashboard(): Dashboard
+
 }
 
 object NetworkClient {
