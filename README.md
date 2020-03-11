@@ -11,7 +11,7 @@ JetDelivery is a sample food delivery app, built with [Jetpack Compose](https://
  
 **Screenshots:**
 
-<img src="art/Screenshot_1.png" width="40%" />
+<img src="art/screenshot-framed-1.png" width="40%" />
 
 **Credits:**
 
