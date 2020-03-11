@@ -1,4 +1,5 @@
-# JetDelivery  
+<img src="art/jetdelivery-main.png" width="100%" />
+
 JetDelivery is a sample food delivery app, built with [Jetpack Compose](https://developer.android.com/jetpack/compose).
 
 **This app showcases:**
