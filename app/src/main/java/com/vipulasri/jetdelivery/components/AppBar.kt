@@ -1,54 +1,57 @@
 package com.vipulasri.jetdelivery.components
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.compose.Composable
-import androidx.compose.Model
-import androidx.ui.core.Text
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Checkbox
-import androidx.ui.material.TopAppBar
-import androidx.ui.res.stringResource
-import androidx.ui.unit.dp
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.vipulasri.jetdelivery.R
-import com.vipulasri.jetdelivery.ui.themeTypography
-
-sealed class MenuAction(@StringRes val label: Int, @DrawableRes val icon: Int?) {
-    object RandomDashboard : MenuAction(R.string.random_dashboard, null)
-}
-
-@Model
-data class TopAppBarMenu(
-    var showRandomDashboard: Boolean = false
-)
 
 @Composable
-fun AppTopBar(name: String, menu: TopAppBarMenu) {
-    TopAppBar<MenuAction>(
-        color = Color.White,
+fun AppTopBar(
+    name: String,
+    showRandom: Boolean,
+    onShowRandomDashboardChange: (showRandom: Boolean) -> Unit = { }
+) {
+    TopAppBar(
         title = { Text(text = name) },
-        actionData = listOf(MenuAction.RandomDashboard),
-        action = { menuAction ->
-            when (menuAction) {
-                MenuAction.RandomDashboard -> {
-                    randomDashboard(label = stringResource(id = menuAction.label), menu = menu)
-                }
-            }
+        backgroundColor = Color.White,
+        actions = {
+            RandomDashboard(
+                showRandom,
+                onRandomDashboardChange = onShowRandomDashboardChange
+            )
         }
     )
 }
 
 @Composable
-private fun randomDashboard(label: String, menu: TopAppBarMenu) {
-    Row {
-        Text(
-            modifier = LayoutGravity.Center,
-            text = label,
-            style = themeTypography.caption)
-        Spacer(modifier = LayoutWidth(5.dp))
-        Checkbox(checked = menu.showRandomDashboard, onCheckedChange = {
-            menu.showRandomDashboard = it
-        })
+private fun RandomDashboard(
+    showRandom: Boolean,
+    onRandomDashboardChange: (isRandom: Boolean) -> Unit = { }
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        PrimaryText {
+            Text(
+                modifier = Modifier,
+                text = stringResource(id = R.string.random_dashboard),
+                style = MaterialTheme.typography.caption
+            )
+        }
+        Spacer(modifier = Modifier.width(5.dp))
+        Checkbox(
+            checked = showRandom,
+            onCheckedChange = onRandomDashboardChange,
+            colors = CheckboxDefaults.colors(
+                checkedColor = MaterialTheme.colors.primary,
+            )
+        )
     }
 }

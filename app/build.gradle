@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-  compileSdkVersion 29
+  compileSdkVersion 32
 
   defaultConfig {
     applicationId "com.vipulasri.jetdelivery"
     minSdkVersion 21
-    targetSdkVersion 29
+    targetSdkVersion 32
     versionCode 1
     versionName "1.0"
 
@@ -31,30 +31,28 @@ android {
     compose true
   }
   composeOptions {
-    kotlinCompilerExtensionVersion "0.1.0-dev05"
+    kotlinCompilerExtensionVersion "${versions.androidx.compose.core}"
   }
 }
 
 dependencies {
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin.stdlib}"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin.stdlib}"
   implementation "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
   implementation "androidx.core:core-ktx:${versions.androidx.ktx.core}"
 
   //compose
-  implementation "androidx.compose:compose-runtime:${versions.androidx.compose}"
-  implementation "androidx.ui:ui-framework:${versions.androidx.compose}"
-  implementation "androidx.ui:ui-layout:${versions.androidx.compose}"
-  implementation "androidx.ui:ui-material:${versions.androidx.compose}"
-  implementation "androidx.ui:ui-tooling:${versions.androidx.compose}"
-  implementation "androidx.ui:ui-foundation:${versions.androidx.compose}"
+  implementation "androidx.activity:activity-compose:${versions.androidx.compose.activity}"
+  implementation "androidx.compose.runtime:runtime-livedata:${versions.androidx.compose.core}"
+  implementation "androidx.compose.material:material:${versions.androidx.compose.core}"
+  implementation "androidx.compose.ui:ui-tooling:${versions.androidx.compose.core}"
 
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin.coroutines}"
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin.coroutines}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin.coroutines.core}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin.coroutines.android}"
 
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidx.ktx.lifecycle}"
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.ktx.lifecycle}"
 
-  implementation "io.coil-kt:coil:${versions.coil}"
+  implementation "io.coil-kt:coil-compose:${versions.coil}"
 
   implementation project(path: ':network')
 

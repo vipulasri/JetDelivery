@@ -1,36 +1,27 @@
 package com.vipulasri.jetdelivery.ui.dashboard
 
-import androidx.compose.Composable
-import androidx.ui.core.Clip
-import androidx.ui.core.Text
-import androidx.ui.foundation.DrawImage
-import androidx.ui.foundation.shape.DrawShape
-import androidx.ui.foundation.shape.RectangleShape
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.Column
-import androidx.ui.layout.Container
-import androidx.ui.layout.LayoutHeight
-import androidx.ui.layout.Spacer
-import androidx.ui.material.ripple.Ripple
-import androidx.ui.res.imageResource
-import androidx.ui.unit.dp
-import com.vipulasri.jetdelivery.R
-import com.vipulasri.jetdelivery.components.image
-import com.vipulasri.jetdelivery.components.primaryText
-import com.vipulasri.jetdelivery.components.secondaryText
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.vipulasri.jetdelivery.components.LoadImage
+import com.vipulasri.jetdelivery.components.PrimaryText
+import com.vipulasri.jetdelivery.components.SecondaryText
 import com.vipulasri.jetdelivery.network.model.Dashboard
-import com.vipulasri.jetdelivery.ui.themeTypography
 
 @Composable
-fun showCategoryElement(item: Dashboard.Item.SubItem) {
+fun ShowCategoryElement(item: Dashboard.Item.SubItem) {
     Column {
-        Spacer(modifier = LayoutHeight(5.dp)) // added to support space for header
-        Ripple(bounded = true) {
-            categoryImage(item = item)
-        }
-        Spacer(modifier = LayoutHeight(5.dp))
-        categoryInfo(
+        Spacer(modifier = Modifier.height(5.dp)) // added to support space for header
+        CategoryImage(item = item)
+        Spacer(modifier = Modifier.height(5.dp))
+        CategoryInfo(
             title = item.title,
             subTitle = item.subTitle
         )
@@ -38,39 +29,39 @@ fun showCategoryElement(item: Dashboard.Item.SubItem) {
 }
 
 @Composable
-private fun categoryImage(item: Dashboard.Item.SubItem) {
-    Container(width = 70.dp, height = 70.dp) {
-        Clip(shape = RoundedCornerShape(5.dp)) {
-            val bgColor = item.meta?.bgColor?.let { color ->
-                getColor(color)
-            } ?: Color.Blue
-            DrawShape(shape = RectangleShape, color = bgColor)
-            Container(width = 40.dp, height = 40.dp) {
-                DrawImage(
-                    image = image(item.imageUrl)
-                        ?: imageResource(id = R.drawable.placeholder_category),
-                    tint = Color.White
-                )
-            }
-        }
+private fun CategoryImage(item: Dashboard.Item.SubItem) {
+    val bgColor = item.meta?.bgColor?.let { color ->
+        getColor(color)
+    } ?: Color.Blue
+
+    Box(
+        modifier = Modifier
+            .size(70.dp)
+            .background(bgColor, shape = RoundedCornerShape(5.dp)),
+        contentAlignment = Alignment.Center
+    ) {
+        LoadImage(
+            image = item.imageUrl,
+            tint = Color.White
+        )
     }
 }
 
 @Composable
-private fun categoryInfo(title: String?, subTitle: String?) {
+private fun CategoryInfo(title: String?, subTitle: String?) {
     title?.let {
-        primaryText {
+        PrimaryText {
             Text(
                 text = it,
-                style = themeTypography.subtitle2
+                style = MaterialTheme.typography.subtitle2
             )
         }
     }
     subTitle?.let {
-        secondaryText {
+        SecondaryText {
             Text(
                 text = it,
-                style = themeTypography.overline
+                style = MaterialTheme.typography.overline
             )
         }
     }

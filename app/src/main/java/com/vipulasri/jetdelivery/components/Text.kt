@@ -1,26 +1,27 @@
 package com.vipulasri.jetdelivery.components
 
-import androidx.compose.Composable
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.ProvideEmphasis
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 
 @Composable
-fun primaryText(children: @Composable() () -> Unit) {
-    ProvideEmphasis(emphasis = MaterialTheme.emphasisLevels().high) {
+fun PrimaryText(children: @Composable() () -> Unit) {
+    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
         children.invoke()
     }
 }
 
 @Composable
-fun secondaryText(children: @Composable() () -> Unit) {
-    ProvideEmphasis(emphasis = MaterialTheme.emphasisLevels().medium) {
+fun SecondaryText(children: @Composable() () -> Unit) {
+    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
         children.invoke()
     }
 }
 
 @Composable
-fun disabledText(children: @Composable() () -> Unit) {
-    ProvideEmphasis(emphasis = MaterialTheme.emphasisLevels().disabled) {
+fun DisabledText(children: @Composable() () -> Unit) {
+    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.disabled) {
         children.invoke()
     }
 }

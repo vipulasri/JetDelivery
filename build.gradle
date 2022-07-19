@@ -2,27 +2,33 @@ buildscript {
   ext.versions = [
           'androidx': [
               'ktx': [
-                  'core': '1.2.0',
-                  'lifecycle': '2.2.0'
+                  'core': '1.8.0',
+                  'lifecycle': '2.5.0'
               ],
-              'compose': '0.1.0-dev05',
-              'appCompat': '1.1.0',
+              'compose': [
+                      'core': '1.1.1',
+                      'activity': '1.5.0'
+              ],
+              'appCompat': '1.4.2',
           ],
           'kotlin': [
-              'stdlib': '1.3.61',
-              'coroutines': '1.3.3',
+              'stdlib': '1.6.10',
+              'coroutines': [
+                      'core': '1.3.7',
+                      'android': '1.6.1'
+              ],
           ],
           'okhttp': '4.3.1',
           'retrofit': '2.7.1',
           'ktlint': '0.35',
-          'coil': '0.9.5'
+          'coil': '2.1.0'
   ]
   repositories {
     google()
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:4.1.0-alpha01'
+    classpath 'com.android.tools.build:gradle:7.2.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin.stdlib}"
   }
 }

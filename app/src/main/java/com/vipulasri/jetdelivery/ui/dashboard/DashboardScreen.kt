@@ -1,75 +1,79 @@
 package com.vipulasri.jetdelivery.ui.dashboard
 
-import androidx.compose.Composable
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.layout.*
-import androidx.ui.res.dimensionResource
-import androidx.ui.unit.dp
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
 import com.vipulasri.jetdelivery.R
-import com.vipulasri.jetdelivery.components.*
+import com.vipulasri.jetdelivery.components.ShowVerticalDivider
 import com.vipulasri.jetdelivery.network.model.Dashboard
 import com.vipulasri.jetdelivery.network.model.ItemViewType
 import com.vipulasri.jetdelivery.network.model.SubItemViewType
 
 @Composable
-fun showDashboard(data: List<Dashboard.Item>) {
-    VerticalScroller {
-        Column(
-            modifier = LayoutPadding(
-                top = dimensionResource(id = R.dimen.padding),
-                bottom = dimensionResource(id = R.dimen.padding)
-            )
-        ) {
-            data.forEachIndexed { index, item ->
-                when (item.viewType) {
-                    ItemViewType.HorizontalScroll -> showHorizontalElements(
-                        item = item
-                    )
-                    ItemViewType.VerticalScroll -> showVerticalElements(
-                        item = item
-                    )
-                }
-                if (index != item.data.size) Spacer(modifier = LayoutHeight(10.dp))
+fun ShowDashboard(data: List<Dashboard.Item>) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(vertical = dimensionResource(id = R.dimen.padding))
+    ) {
+        itemsIndexed(items = data) { index, item ->
+            when (item.viewType) {
+                ItemViewType.HorizontalScroll -> ShowHorizontalElements(
+                    item = item
+                )
+                ItemViewType.VerticalScroll -> ShowVerticalElements(
+                    item = item
+                )
             }
+            if (index != item.data.size) Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }
 
-private fun showHorizontalElements(item: Dashboard.Item) {
+@Composable
+private fun ShowHorizontalElements(item: Dashboard.Item) {
     item.header?.let {
-        showHeader(title = it.title, hasMore = it.hasMore)
+        ShowHeader(title = it.title, hasMore = it.hasMore)
     }
-    horizontalScroll {
-        item.data.forEachIndexed { index, data ->
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.padding))
+    ) {
+        itemsIndexed(item.data) { index, data ->
             when (data.viewType) {
-                SubItemViewType.Banner -> showBannerElement(
+                SubItemViewType.Banner -> ShowBannerElement(
                     item = data
                 )
-                SubItemViewType.Category -> showCategoryElement(
+                SubItemViewType.Category -> ShowCategoryElement(
                     item = data
                 )
                 else -> {
                     // do nothing
                 }
             }
-            if (index != item.data.size) Spacer(modifier = LayoutWidth(10.dp))
+            if (index != item.data.size) Spacer(modifier = Modifier.width(10.dp))
         }
     }
 }
 
-private fun showVerticalElements(item: Dashboard.Item) {
+@Composable
+private fun ShowVerticalElements(item: Dashboard.Item) {
     item.header?.let {
-        showHeader(title = it.title, hasMore = it.hasMore)
+        ShowHeader(title = it.title, hasMore = it.hasMore)
     }
     item.data.forEachIndexed { index, data ->
         when (data.viewType) {
-            SubItemViewType.Restaurant -> showRestaurantElement(
+            SubItemViewType.Restaurant -> ShowRestaurantElement(
                 item = data
             )
             else -> {
                 // do nothing
             }
         }
-        if (index != item.data.size) showVerticalDivider()
+        if (index != item.data.size) ShowVerticalDivider()
     }
 }
